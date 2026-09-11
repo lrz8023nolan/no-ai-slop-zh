@@ -63,6 +63,47 @@ npx skills add lrz8023nolan/no-ai-slop-zh --skill no-ai-slop-zh --global --yes
 
 它会列出命中的每一条套路、引用原句、给出简短改法。不改写、不打分、也不猜这段文字是不是 AI 写的——AI 检测靠猜，命名套路才是你能自己核对的证据。
 
+## 仓库结构
+
+```
+.
+├── skills/no-ai-slop-zh/          # skill 本体：Agent 实际读取的规则与自检清单
+│   ├── SKILL.md
+│   ├── eval.md
+│   └── agents/openai.yaml
+├── .codex-plugin/plugin.json      # ChatGPT / Codex 插件清单
+├── agents/openai.yaml             # 插件界面元数据（显示名、默认提示词）
+├── assets/no-ai-slop-zh.png       # 插件图标
+├── scripts/build_plugin.py        # 把以上内容打包成可分发的 zip
+├── .github/workflows/plugin.yml   # CI：自动构建，打 v* 标签时发布 Release
+├── PRIVACY.md                     # 插件上架所需的隐私说明
+├── TERMS.md                       # 插件上架所需的使用条款
+├── plugin-submission.md           # 提交到插件商店的说明
+├── README.md
+├── LICENSE
+└── .gitignore
+```
+
+只有 `skills/` 目录是 Agent 真正读取的内容，其余都是为「打包成 ChatGPT / Codex 插件」服务的基础设施。
+
+## 作为 ChatGPT / Codex 插件使用
+
+仓库已包含完整的插件打包配置。本地构建：
+
+```bash
+python scripts/build_plugin.py          # 产出 dist/no-ai-slop-zh-plugin-1.0.0.zip
+python scripts/build_plugin.py --check  # 只校验，不保留产物
+```
+
+推送到 `main` 或提 PR 时，GitHub Actions 会自动构建并上传 zip 产物；打一个 `v*` 标签会自动创建 Release 并附上插件包：
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+> 注：`build_plugin.py` 相比原版做了一处修复，把校验时的路径统一为正斜杠，否则在 Windows 上会因反斜杠分隔符而校验失败。
+
 ## 与原版的关系
 
 本仓库基于 [Peter Yang 的 no-ai-slop](https://github.com/petergyang/no-ai-slop)（MIT 协议）做中文本地化改造。
@@ -74,6 +115,7 @@ npx skills add lrz8023nolan/no-ai-slop-zh --skill no-ai-slop-zh --global --yes
 | 套路清单 | **重写**：英文表达（"It's not X. It's Y."）改为中文对应表达，并补上中文特有项 |
 | 新增条目 | 排比对仗堆砌、强行分点、四字成语连用、"在……的今天/背景下"开头、假强动词、空话式动宾搭配 |
 | 全部示例 | **替换**：例句改为中文实例，如「这个集成把部署时间从 40 分钟压到 4 分钟」 |
+| 插件发布设施 | **保留并适配**：`.codex-plugin/`、`agents/`、`assets/`、`scripts/build_plugin.py`、`.github/workflows/`、`PRIVACY.md`、`TERMS.md`、`plugin-submission.md` |
 
 原版是英文写作工具，直接翻译过来会有一半条目用不上。这个中文版保留的是它的方法论骨架，规则内容按中文实际写作习惯重建。
 
@@ -81,6 +123,8 @@ npx skills add lrz8023nolan/no-ai-slop-zh --skill no-ai-slop-zh --global --yes
 
 - 原版 [no-ai-slop](https://github.com/petergyang/no-ai-slop) 作者 [Peter Yang](https://github.com/petergyang)
 - 中文版改造者 [Nolan](https://github.com/lrz8023nolan)
+
+插件图标沿用原版素材（MIT 许可）。如需替换为独立设计，替换 `assets/no-ai-slop-zh.png` 即可，`plugin.json` 无需改动。
 
 ## 许可
 

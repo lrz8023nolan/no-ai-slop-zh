@@ -1,0 +1,43 @@
+{
+  "name": "no-ai-slop-zh",
+  "version": "1.0.0",
+  "description": "去除中文写作中的 20+ 种 AI 腔套路，同时不磨平作者本人的语气。",
+  "author": {
+    "name": "Nolan",
+    "url": "https://github.com/lrz8023nolan"
+  },
+  "homepage": "https://github.com/lrz8023nolan/no-ai-slop-zh",
+  "repository": "https://github.com/lrz8023nolan/no-ai-slop-zh",
+  "license": "MIT",
+  "keywords": [
+    "writing",
+    "editing",
+    "voice",
+    "AI slop",
+    "chinese",
+    "中文写作"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "去 AI 腔（中文版）",
+    "shortDescription": "去除中文写作中的 AI 腔套路",
+    "longDescription": "这个插件会从你的文稿里删掉 20+ 种 AI 腔套路，同时不磨平你自己的语气。它处理的套路包括：\n\n二元对比：「这不是 X，而是 Y。」\n\n清嗓子式开场：「让我们一起来探讨」「话不多说」\n\n伪洞见铺垫：「很多人不知道的是」「真正重要的是」\n\n冒号揭示：「答案很简单：……」「最妙的地方在于：……」\n\n伪深刻结尾：「未来已来」「让我们一起奔赴山海」\n\n……以及更多。\n\n用它改稿，或者只检测文稿里命中了哪些套路而不改写。本插件基于 Peter Yang 的 no-ai-slop 做中文本地化改造：https://github.com/petergyang/no-ai-slop 。如果它有用，欢迎在 GitHub 上点个 star：https://github.com/lrz8023nolan/no-ai-slop-zh",
+    "developerName": "Nolan",
+    "category": "Productivity",
+    "capabilities": [
+      "Edit",
+      "Detect",
+      "Preserve voice"
+    ],
+    "websiteURL": "https://github.com/lrz8023nolan/no-ai-slop-zh",
+    "privacyPolicyURL": "https://github.com/lrz8023nolan/no-ai-slop-zh/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/lrz8023nolan/no-ai-slop-zh/blob/main/TERMS.md",
+    "defaultPrompt": [
+      "（你的文稿）",
+      "这段有 AI 味吗？（你的文稿）"
+    ],
+    "brandColor": "#D30800",
+    "composerIcon": "./assets/no-ai-slop-zh.png",
+    "logo": "./assets/no-ai-slop-zh.png"
+  }
+}
