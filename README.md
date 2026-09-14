@@ -84,7 +84,6 @@ npx skills add lrz8023nolan/no-ai-slop-zh --skill no-ai-slop-zh --global --yes
 └── .gitignore
 ```
 
-只有 `skills/` 目录是 Agent 真正读取的内容，其余都是为「打包成 ChatGPT / Codex 插件」服务的基础设施。
 
 ## 作为 ChatGPT / Codex 插件使用
 
@@ -102,7 +101,6 @@ git tag v1.0.0
 git push origin v1.0.0
 ```
 
-> 注：`build_plugin.py` 相比原版做了一处修复，把校验时的路径统一为正斜杠，否则在 Windows 上会因反斜杠分隔符而校验失败。
 
 ## 与原版的关系
 
@@ -124,7 +122,7 @@ git push origin v1.0.0
 - 原版 [no-ai-slop](https://github.com/petergyang/no-ai-slop) 作者 [Peter Yang](https://github.com/petergyang)
 - 中文版改造者 [Nolan](https://github.com/lrz8023nolan)
 
-插件图标沿用原版素材（MIT 许可）。如需替换为独立设计，替换 `assets/no-ai-slop-zh.png` 即可，`plugin.json` 无需改动。
+插件图标沿用原版素材（MIT 许可）。
 
 ## 许可
 
